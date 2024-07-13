@@ -1,4 +1,4 @@
-class User():
+class User:
     def __init__(self, user_id, name):
         self._user_id = user_id
         self._name = name
@@ -26,9 +26,9 @@ class User():
 class Admin(User):
     def __init__(self, user_id, name, admin_access_level):
         super().__init__(user_id, name)
-        self._admin_access_level = admin_access_level
         self._access_level = 'admin'
-        self._user = []
+        self._admin_access_level = admin_access_level
+        self._users = []
 
     def get_admin_access_level(self):
         return self._admin_access_level
@@ -53,7 +53,8 @@ print(f"User ID: {user1.get_user_id()}, Name: {user1.get_name()}, Access Level: 
 
 # Создаем администратора
 admin = Admin(2, 'Bob', 'high')
-print(f"Admin ID: {admin.get_user_id()}, Name: {admin.get_name()}, Access Level: {admin.get_access_level()}, Admin Access Level: {admin.get_admin_access_level()}")
+print(
+    f"Admin ID: {admin.get_user_id()}, Name: {admin.get_name()}, Access Level: {admin.get_access_level()}, Admin Access Level: {admin.get_admin_access_level()}")
 
 # Администратор добавляет пользователя в систему
 admin.add_user(user1)
@@ -62,6 +63,3 @@ print(f"Users in system: {[user.get_name() for user in admin.get_users()]}")
 # Администратор удаляет пользователя из системы
 admin.remove_user(1)
 print(f"Users in system after removal: {[user.get_name() for user in admin.get_users()]}")
-
-
-
